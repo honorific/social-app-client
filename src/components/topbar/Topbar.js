@@ -11,8 +11,8 @@ const Topbar = () => {
         <span className='logo'>Social App</span>
       </div>
       <div className='topbarCenter'>
-        <div className='searchBar'>
-          <SearchIcon />
+        <div className='searchbar'>
+          <SearchIcon className='searchIcon' />
           <input
             type='text'
             placeholder='search for friends or post or video'
