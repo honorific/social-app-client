@@ -38,8 +38,8 @@ const Topbar = () => {
             <NotificationsIcon />
             <span className='topbarIconBadge'>1</span>
           </div>
-          <img src='/assets/person/1.jpeg' alt='' className='topbarImg' />
         </div>
+        <img src='/assets/person/1.jpeg' alt='' className='topbarImg' />
       </div>
     </div>
   )
