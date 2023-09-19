@@ -24,19 +24,19 @@ const Topbar = () => {
         <div className='topbarLinks'>
           <span className='topbarLink'>Home page</span>
           <span className='topbarLink'>Timeline</span>
-          <div className='topbarIcons'>
-            <div className='topbarIconItem'>
-              <PersonIcon />
-              <span className='topbarIconBadge'>1</span>
-            </div>
-            <div className='topbarIconItem'>
-              <ChatIcon />
-              <span className='topbarIconBadge'>2</span>
-            </div>
-            <div className='topbarIconItem'>
-              <NotificationsIcon />
-              <span className='topbarIconBadge'>1</span>
-            </div>
+        </div>
+        <div className='topbarIcons'>
+          <div className='topbarIconItem'>
+            <PersonIcon />
+            <span className='topbarIconBadge'>1</span>
+          </div>
+          <div className='topbarIconItem'>
+            <ChatIcon />
+            <span className='topbarIconBadge'>2</span>
+          </div>
+          <div className='topbarIconItem'>
+            <NotificationsIcon />
+            <span className='topbarIconBadge'>1</span>
           </div>
           <img src='/assets/person/1.jpeg' alt='' className='topbarImg' />
         </div>
