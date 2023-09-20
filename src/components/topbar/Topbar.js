@@ -11,8 +11,8 @@ const Topbar = () => {
         <span className='logo'>Social App</span>
       </div>
       <div className='topbarCenter'>
-        <div className='searchBar'>
-          <SearchIcon />
+        <div className='searchbar'>
+          <SearchIcon className='searchIcon' />
           <input
             type='text'
             placeholder='search for friends or post or video'
@@ -24,22 +24,22 @@ const Topbar = () => {
         <div className='topbarLinks'>
           <span className='topbarLink'>Home page</span>
           <span className='topbarLink'>Timeline</span>
-          <div className='topbarIcons'>
-            <div className='topbarIconItem'>
-              <PersonIcon />
-              <span className='topbarIconBadge'>1</span>
-            </div>
-            <div className='topbarIconItem'>
-              <ChatIcon />
-              <span className='topbarIconBadge'>2</span>
-            </div>
-            <div className='topbarIconItem'>
-              <NotificationsIcon />
-              <span className='topbarIconBadge'>1</span>
-            </div>
-          </div>
-          <img src='/assets/person/1.jpeg' alt='' className='topbarImg' />
         </div>
+        <div className='topbarIcons'>
+          <div className='topbarIconItem'>
+            <PersonIcon />
+            <span className='topbarIconBadge'>1</span>
+          </div>
+          <div className='topbarIconItem'>
+            <ChatIcon />
+            <span className='topbarIconBadge'>2</span>
+          </div>
+          <div className='topbarIconItem'>
+            <NotificationsIcon />
+            <span className='topbarIconBadge'>1</span>
+          </div>
+        </div>
+        <img src='/assets/person/1.jpeg' alt='' className='topbarImg' />
       </div>
     </div>
   )
