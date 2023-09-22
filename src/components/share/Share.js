@@ -1,4 +1,5 @@
 import './share.css'
+import PermMediaIcon from '@mui/icons-material/PermMedia'
 
 const Share = () => {
   return (
@@ -13,7 +14,14 @@ const Share = () => {
           />
         </div>
         <hr className='shareHr' />
-        <div className='shareBottom'></div>
+        <div className='shareBottom'>
+          <div className='shareOptions'>
+            <div className='shareOption'>
+              <PermMediaIcon className='shareIcon' />
+              <span className='shareOptionText'>Photo or Video</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
