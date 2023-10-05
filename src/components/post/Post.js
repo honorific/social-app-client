@@ -1,5 +1,6 @@
 import './post.css'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
+import {Users} from '../../dummyData'
 
 const Post = ({post}) => {
   return (
@@ -7,8 +8,10 @@ const Post = ({post}) => {
       <div className='postWrapper'>
         <div className='postTop'>
           <div className='postTopLeft'>
-            <img className='postProfileImg' src={post.photo} />
-            <span className='postUsername'>honorific</span>
+            <img className='postProfileImg' src='/assets/person/1.jpeg' />
+            <span className='postUsername'>
+              {Users.filter((u) => u.id === post.userId)[0].username}
+            </span>
             <span className='postDate'>{post.date}</span>
           </div>
           <div className='postTopRight'>
@@ -17,7 +20,7 @@ const Post = ({post}) => {
         </div>
         <div className='postCenter'>
           <span className='postText'>{post?.desc}</span>
-          <img className='postImg' src='/assets/post/1.jpeg' />
+          <img className='postImg' src={post.photo} />
         </div>
         <div className='postBottom'>
           <div className='postBottomLeft'>
