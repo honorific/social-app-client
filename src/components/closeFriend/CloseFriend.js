@@ -1,4 +1,4 @@
-import './CloseFriend.css'
+import './closeFriend.css'
 
 const CloseFriend = ({user}) => {
   return (
