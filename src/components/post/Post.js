@@ -1,8 +1,10 @@
 import './post.css'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import {Users} from '../../dummyData'
+import {useState} from 'react'
 
 const Post = ({post}) => {
+  const [like, setLike] = useState(post.like)
   return (
     <div className='post'>
       <div className='postWrapper'>
@@ -29,7 +31,7 @@ const Post = ({post}) => {
           <div className='postBottomLeft'>
             <img className='likeIcon' src='assets/like.png' />
             <img className='likeIcon' src='assets/heart.png' />
-            <span className='postLikeCounter'>{post.like} people like it</span>
+            <span className='postLikeCounter'>{like} people like it</span>
           </div>
           <div className='postBottomRight'>
             <span className='postCommentText'>{post.comment} comments</span>
