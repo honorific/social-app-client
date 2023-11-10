@@ -10,6 +10,9 @@ import {
   Event,
   School,
 } from '@mui/icons-material'
+import {Users} from '../../dummyData'
+import CloseFriend from '../closeFriend/CloseFriend'
+
 const Sidebar = () => {
   return (
     <div className='sidebar'>
@@ -55,54 +58,9 @@ const Sidebar = () => {
         <button className='sidebarButton'>Show more</button>
         <hr className='sidebarHr' />
         <ul className='sidebarFriendList'>
-          <li className='sidebarFriend'>
-            <img
-              className='sidebarFriendImg'
-              src='/assets/person/2.jpeg'
-              alt=''
-            />
-            <span className='sidebarFriendName'>Jane doe</span>
-          </li>
-          <li className='sidebarFriend'>
-            <img
-              className='sidebarFriendImg'
-              src='/assets/person/2.jpeg'
-              alt=''
-            />
-            <span className='sidebarFriendName'>Jane doe</span>
-          </li>
-          <li className='sidebarFriend'>
-            <img
-              className='sidebarFriendImg'
-              src='/assets/person/2.jpeg'
-              alt=''
-            />
-            <span className='sidebarFriendName'>Jane doe</span>
-          </li>
-          <li className='sidebarFriend'>
-            <img
-              className='sidebarFriendImg'
-              src='/assets/person/2.jpeg'
-              alt=''
-            />
-            <span className='sidebarFriendName'>Jane doe</span>
-          </li>
-          <li className='sidebarFriend'>
-            <img
-              className='sidebarFriendImg'
-              src='/assets/person/2.jpeg'
-              alt=''
-            />
-            <span className='sidebarFriendName'>Jane doe</span>
-          </li>
-          <li className='sidebarFriend'>
-            <img
-              className='sidebarFriendImg'
-              src='/assets/person/2.jpeg'
-              alt=''
-            />
-            <span className='sidebarFriendName'>Jane doe</span>
-          </li>
+          {Users.map((u) => {
+            return <CloseFriend key={u.id} users={u} />
+          })}
         </ul>
       </div>
     </div>
