@@ -1,6 +1,7 @@
 import Home from './pages/home/Home'
+import Profile from './pages/profile/Profile'
 const App = () => {
-  return <Home />
+  return <Profile />
 }
 
 export default App
