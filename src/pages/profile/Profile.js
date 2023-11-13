@@ -16,6 +16,10 @@ const Profile = () => {
               <img className='profileCoverImg' src='assets/post/3.jpeg' />
               <img className='profileUserImg' src='assets/post/7.jpeg' />
             </div>
+            <div className='profileInfo'>
+              <h4 className='profileInfoName'>John doe</h4>
+              <span className='profileInfoDesc'>Hello world</span>
+            </div>
           </div>
           <div className='profileRightBottom'>
             <Feed />
