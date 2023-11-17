@@ -23,7 +23,25 @@ const Rightbar = ({profile}) => {
     )
   }
   const ProfileRightbar = () => {
-    return <h4>User information</h4>
+    return (
+      <>
+        <h4 className='rightbarTitle'>User information</h4>
+        <div className='rightbarInfo'>
+          <div className='rightbarInfoItem'>
+            <span className='rightbarInfoKey'>City: </span>
+            <span className='rightbarInfoValue'>New York</span>
+          </div>
+          <div className='rightbarInfoItem'>
+            <span className='rightbarInfoKey'>From: </span>
+            <span className='rightbarInfoValue'>New York</span>
+          </div>
+          <div className='rightbarInfoItem'>
+            <span className='rightbarInfoKey'>Relationship: </span>
+            <span className='rightbarInfoValue'>Single</span>
+          </div>
+        </div>
+      </>
+    )
   }
   return (
     <div className='rightbar'>
