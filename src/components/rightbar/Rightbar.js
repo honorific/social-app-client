@@ -40,6 +40,33 @@ const Rightbar = ({profile}) => {
             <span className='rightbarInfoValue'>Single</span>
           </div>
         </div>
+        <h4>user friends</h4>
+        <div className='rightbarFollowings'>
+          <div className='rightbarFollwing'>
+            <img src='assets/person/1.jpeg' className='rightbarfollowingImg' />
+            <span className='rightbarFollowingName'>john doe</span>
+          </div>
+          <div className='rightbarFollwing'>
+            <img src='assets/person/2.jpeg' className='rightbarfollowingImg' />
+            <span className='rightbarFollowingName'>john doe</span>
+          </div>
+          <div className='rightbarFollwing'>
+            <img src='assets/person/3.jpeg' className='rightbarfollowingImg' />
+            <span className='rightbarFollowingName'>john doe</span>
+          </div>
+          <div className='rightbarFollwing'>
+            <img src='assets/person/4.jpeg' className='rightbarfollowingImg' />
+            <span className='rightbarFollowingName'>john doe</span>
+          </div>
+          <div className='rightbarFollwing'>
+            <img src='assets/person/5.jpeg' className='rightbarfollowingImg' />
+            <span className='rightbarFollowingName'>john doe</span>
+          </div>
+          <div className='rightbarFollwing'>
+            <img src='assets/person/6.jpeg' className='rightbarfollowingImg' />
+            <span className='rightbarFollowingName'>john doe</span>
+          </div>
+        </div>
       </>
     )
   }
