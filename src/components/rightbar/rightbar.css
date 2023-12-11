@@ -52,6 +52,10 @@
   color: #555;
 }
 
+.rightbarInfoValue {
+  font-weight: 300;
+}
+
 .rightbarfollowingImg {
   height: 100px;
   width: 100px;
