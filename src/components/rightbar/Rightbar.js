@@ -42,27 +42,27 @@ const Rightbar = ({profile}) => {
         </div>
         <h4>user friends</h4>
         <div className='rightbarFollowings'>
-          <div className='rightbarFollwing'>
+          <div className='rightbarFollowing'>
             <img src='assets/person/1.jpeg' className='rightbarfollowingImg' />
             <span className='rightbarFollowingName'>john doe</span>
           </div>
-          <div className='rightbarFollwing'>
+          <div className='rightbarFollowing'>
             <img src='assets/person/2.jpeg' className='rightbarfollowingImg' />
             <span className='rightbarFollowingName'>john doe</span>
           </div>
-          <div className='rightbarFollwing'>
+          <div className='rightbarFollowing'>
             <img src='assets/person/3.jpeg' className='rightbarfollowingImg' />
             <span className='rightbarFollowingName'>john doe</span>
           </div>
-          <div className='rightbarFollwing'>
+          <div className='rightbarFollowing'>
             <img src='assets/person/4.jpeg' className='rightbarfollowingImg' />
             <span className='rightbarFollowingName'>john doe</span>
           </div>
-          <div className='rightbarFollwing'>
+          <div className='rightbarFollowing'>
             <img src='assets/person/5.jpeg' className='rightbarfollowingImg' />
             <span className='rightbarFollowingName'>john doe</span>
           </div>
-          <div className='rightbarFollwing'>
+          <div className='rightbarFollowing'>
             <img src='assets/person/6.jpeg' className='rightbarfollowingImg' />
             <span className='rightbarFollowingName'>john doe</span>
           </div>
