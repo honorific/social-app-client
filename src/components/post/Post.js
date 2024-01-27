@@ -27,7 +27,10 @@ const Post = ({post}) => {
       <div className='postWrapper'>
         <div className='postTop'>
           <div className='postTopLeft'>
-            <img className='postProfileImg' src={user.profilePicture} />
+            <img
+              className='postProfileImg'
+              src={user.profilePicture || `${PF}person/noAvatar.png`}
+            />
             <span className='postUsername'>{user.username}</span>
             <span className='postDate'>{post.date}</span>
           </div>
