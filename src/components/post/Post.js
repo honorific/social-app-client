@@ -4,7 +4,7 @@ import axios from 'axios'
 import {useEffect, useState} from 'react'
 
 const Post = ({post}) => {
-  const [like, setLike] = useState(post.like)
+  const [like, setLike] = useState(post.likes.length)
   const [isLiked, setIsLiked] = useState(false)
   const [user, setUser] = useState({})
 
@@ -27,7 +27,10 @@ const Post = ({post}) => {
       <div className='postWrapper'>
         <div className='postTop'>
           <div className='postTopLeft'>
-            <img className='postProfileImg' src={user.profilePicture} />
+            <img
+              className='postProfileImg'
+              src={user.profilePicture || `${PF}person/noAvatar.png`}
+            />
             <span className='postUsername'>{user.username}</span>
             <span className='postDate'>{post.date}</span>
           </div>
@@ -37,7 +40,7 @@ const Post = ({post}) => {
         </div>
         <div className='postCenter'>
           <span className='postText'>{post?.desc}</span>
-          <img className='postImg' src={`${PF}${post?.photo}`} />
+          <img className='postImg' src={post.img} />
         </div>
         <div className='postBottom'>
           <div className='postBottomLeft'>
