@@ -3,9 +3,20 @@ import Topbar from '../../components/topbar/Topbar'
 import Sidebar from '../../components/sidebar/Sidebar'
 import Feed from '../../components/feed/Feed'
 import Rightbar from '../../components/rightbar/Rightbar'
+import {useEffect, useState} from 'react'
+import axios from 'axios'
 
 const Profile = () => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
+  const [user, setUser] = useState({})
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get('/users?username=john')
+      console.log(res)
+      setUser(res.data)
+    }
+    fetchUser()
+  }, [])
   return (
     <>
       <Topbar />
@@ -18,8 +29,8 @@ const Profile = () => {
               <img className='profileUserImg' src={`${PF}person/7.jpeg`} />
             </div>
             <div className='profileInfo'>
-              <h4 className='profileInfoName'>John doe</h4>
-              <span className='profileInfoDesc'>Hello world</span>
+              <h4 className='profileInfoName'>{user.username}</h4>
+              <span className='profileInfoDesc'>{user.desc}</span>
             </div>
           </div>
           <div className='profileRightBottom'>
