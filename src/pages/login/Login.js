@@ -4,13 +4,14 @@ import {loginCall} from '../../apiCalls'
 import {AuthContext} from '../../context/AuthContext'
 
 const Login = () => {
-  const {isFetching, error, dispatch} = useContext(AuthContext)
+  const {user, isFetching, error, dispatch} = useContext(AuthContext)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const handleClick = (e) => {
     e.preventDefault()
     loginCall({email, password}, dispatch)
   }
+  console.log('user is: ', user)
   return (
     <div className='login'>
       <div className='loginWrapper'>
@@ -35,7 +36,9 @@ const Login = () => {
               required
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button className='loginButton'>Log In</button>
+            <button className='loginButton'>
+              {isFetching ? 'Loading' : 'Log In'}
+            </button>
             <span className='loginForgot'>Forgot Password</span>
             <button className='loginRegisterButton'>
               Create a New Account
