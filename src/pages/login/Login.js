@@ -2,6 +2,7 @@ import {useContext, useState} from 'react'
 import './login.css'
 import {loginCall} from '../../apiCalls'
 import {AuthContext} from '../../context/AuthContext'
+import {CircularProgress} from '@mui/material'
 
 const Login = () => {
   const {user, isFetching, error, dispatch} = useContext(AuthContext)
@@ -37,7 +38,11 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <button className='loginButton'>
-              {isFetching ? 'Loading' : 'Log In'}
+              {isFetching ? (
+                <CircularProgress sx={{color: 'white', mt: '5px'}} size={25} />
+              ) : (
+                'Log In'
+              )}
             </button>
             <span className='loginForgot'>Forgot Password</span>
             <button className='loginRegisterButton'>
