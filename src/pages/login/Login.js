@@ -37,7 +37,7 @@ const Login = () => {
               required
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button className='loginButton'>
+            <button className='loginButton' disabled={isFetching}>
               {isFetching ? (
                 <CircularProgress sx={{color: 'white', mt: '5px'}} size={25} />
               ) : (
@@ -46,7 +46,11 @@ const Login = () => {
             </button>
             <span className='loginForgot'>Forgot Password</span>
             <button className='loginRegisterButton'>
-              Create a New Account
+              {isFetching ? (
+                <CircularProgress sx={{color: 'white', mt: '5px'}} size={25} />
+              ) : (
+                'Create a New Account'
+              )}
             </button>
           </form>
         </div>
