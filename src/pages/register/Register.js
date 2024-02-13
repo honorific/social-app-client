@@ -2,6 +2,8 @@ import {useContext, useState} from 'react'
 import './register.css'
 import {AuthContext} from '../../context/AuthContext'
 import {Navigate} from 'react-router-dom'
+import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
 
 const Register = () => {
   const {user} = useContext(AuthContext)
@@ -10,10 +12,21 @@ const Register = () => {
   const [username, setUsername] = useState('')
   const [passwordAgain, setPasswordAgain] = useState('')
   const [error, setError] = useState([])
-  const handleClick = (e) => {
+  const navigate = useNavigate()
+  const handleClick = async (e) => {
     e.preventDefault()
     if (password !== passwordAgain) {
-      setError((prev) => [...prev, "passwords doesn't match"])
+      if (!error.some((er) => er === "passwords doesn't match")) {
+        setError((prev) => [...prev, "passwords doesn't match"])
+      }
+    } else {
+      const user = {username, email, password}
+      try {
+        await axios.post('/auth/register', user)
+        navigate('/login')
+      } catch (err) {
+        console.log(err)
+      }
     }
   }
   return (
@@ -28,17 +41,20 @@ const Register = () => {
             </span>
           </div>
           <div className='loginRight'>
-            <ul
-              style={{
-                backgroundColor: 'red',
-                borderRadius: '15px',
-                padding: '20px',
-              }}
-            >
-              {error.map((er) => {
-                return <li>{er}</li>
-              })}
-            </ul>
+            {error.length > 0 && (
+              <ul
+                style={{
+                  backgroundColor: 'red',
+                  borderRadius: '15px',
+                  padding: '20px',
+                }}
+              >
+                {error.map((er) => {
+                  return <li>{er}</li>
+                })}
+              </ul>
+            )}
+
             <form className='loginBox' onSubmit={handleClick}>
               <input
                 placeholder='Username'
