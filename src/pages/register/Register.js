@@ -13,7 +13,9 @@ const Register = () => {
   const handleClick = (e) => {
     e.preventDefault()
     if (password !== passwordAgain) {
-      setError((prev) => [...prev, "passwords doesn't match"])
+      if (!error.some((er) => er === "passwords doesn't match")) {
+        setError((prev) => [...prev, "passwords doesn't match"])
+      }
     }
   }
   return (
@@ -28,17 +30,20 @@ const Register = () => {
             </span>
           </div>
           <div className='loginRight'>
-            <ul
-              style={{
-                backgroundColor: 'red',
-                borderRadius: '15px',
-                padding: '20px',
-              }}
-            >
-              {error.map((er) => {
-                return <li>{er}</li>
-              })}
-            </ul>
+            {error.length > 0 && (
+              <ul
+                style={{
+                  backgroundColor: 'red',
+                  borderRadius: '15px',
+                  padding: '20px',
+                }}
+              >
+                {error.map((er) => {
+                  return <li>{er}</li>
+                })}
+              </ul>
+            )}
+
             <form className='loginBox' onSubmit={handleClick}>
               <input
                 placeholder='Username'
