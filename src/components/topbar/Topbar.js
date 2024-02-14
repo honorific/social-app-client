@@ -45,14 +45,16 @@ const Topbar = () => {
             <span className='topbarIconBadge'>1</span>
           </div>
         </div>
-        <img
-          src={
-            user?.profilePicture
-              ? `${PF}/${user.profilePicture}`
-              : `${PF}/person/noAvatar.png`
-          }
-          className='topbarImg'
-        />
+        <Link to={`profile/${user.username}`}>
+          <img
+            src={
+              user?.profilePicture
+                ? `${PF}/${user.profilePicture}`
+                : `${PF}/person/noAvatar.png`
+            }
+            className='topbarImg'
+          />
+        </Link>
       </div>
     </div>
   )
