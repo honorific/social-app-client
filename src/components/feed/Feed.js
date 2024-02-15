@@ -17,7 +17,7 @@ const Feed = ({username}) => {
       setPosts(res.data)
     }
     fetchPosts()
-  }, [username])
+  }, [username, user._id])
 
   return (
     <div className='feed'>
