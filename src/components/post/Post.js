@@ -1,14 +1,16 @@
 import './post.css'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import axios from 'axios'
-import {useEffect, useState} from 'react'
+import {useContext, useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import {format} from 'timeago.js'
+import {AuthContext} from '../../context/AuthContext'
 
 const Post = ({post}) => {
   const [like, setLike] = useState(post.likes.length)
   const [isLiked, setIsLiked] = useState(false)
   const [user, setUser] = useState({})
+  const {user: currentUser} = useContext(AuthContext)
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -21,6 +23,13 @@ const Post = ({post}) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
   const likeHandler = () => {
     setLike(isLiked ? like - 1 : like + 1)
+    try {
+      axios.put(`/posts/${post._id}/like`, {
+        userId: 'currentUser._id',
+      })
+    } catch (err) {
+      console.log('like process failed with this error: ', err)
+    }
     setIsLiked(!isLiked)
   }
   return (
