@@ -3,12 +3,15 @@ import PermMediaIcon from '@mui/icons-material/PermMedia'
 import LabelIcon from '@mui/icons-material/Label'
 import RoomIcon from '@mui/icons-material/Room'
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions'
-import {useContext} from 'react'
+import {useContext, useState} from 'react'
 import {AuthContext} from '../../context/AuthContext'
 
 const Share = () => {
   const {user} = useContext(AuthContext)
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
+  const [desc, setDesc] = useState('')
+  const [file, setFile] = useState(null)
+  const submitHandler = () => {}
   return (
     <div className='share'>
       <div className='shareWrapper'>
@@ -26,15 +29,23 @@ const Share = () => {
             type='text'
             className='shareInput'
             placeholder="what's in your mind"
+            onChange={(e) => setDesc(e.target.value)}
           />
         </div>
         <hr className='shareHr' />
-        <div className='shareBottom'>
+        <form className='shareBottom' onSubmit={submitHandler}>
           <div className='shareOptions'>
-            <div className='shareOption'>
+            <label htmlFor='file' className='shareOption'>
               <PermMediaIcon htmlColor='tomato' className='shareIcon' />
               <span className='shareOptionText'>Photo or Video</span>
-            </div>
+              <input
+                type='file'
+                id='file'
+                accept='.png,.jpeg,.jpg'
+                onChange={(e) => setFile(e.target.files[0])}
+                style={{display: 'none'}}
+              />
+            </label>
             <div className='shareOption'>
               <LabelIcon htmlColor='blue' className='shareIcon' />
               <span className='shareOptionText'>Tag</span>
@@ -48,8 +59,10 @@ const Share = () => {
               <span className='shareOptionText'>Feelings</span>
             </div>
           </div>
-          <button className='shareButton'>Share</button>
-        </div>
+          <button className='shareButton' type='submit'>
+            Share
+          </button>
+        </form>
       </div>
     </div>
   )
