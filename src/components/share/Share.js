@@ -5,13 +5,23 @@ import RoomIcon from '@mui/icons-material/Room'
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions'
 import {useContext, useState} from 'react'
 import {AuthContext} from '../../context/AuthContext'
+import axios from 'axios'
 
 const Share = () => {
   const {user} = useContext(AuthContext)
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
   const [desc, setDesc] = useState('')
   const [file, setFile] = useState(null)
-  const submitHandler = () => {}
+  const submitHandler = async (e) => {
+    e.preventDefault()
+    const newPost = {
+      userId: user._id,
+      desc,
+    }
+    try {
+      await axios.post('/posts', newPost)
+    } catch (err) {}
+  }
   return (
     <div className='share'>
       <div className='shareWrapper'>
