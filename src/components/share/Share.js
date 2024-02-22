@@ -18,9 +18,23 @@ const Share = () => {
       userId: user._id,
       desc,
     }
+    if (file) {
+      const data = new FormData()
+      const fileName = Date.now() + file.name
+      data.append('name', fileName)
+      data.append('file', file)
+      newPost.img = fileName
+      try {
+        await axios.post('/upload', data)
+      } catch (err) {
+        console.log(err)
+      }
+    }
     try {
       await axios.post('/posts', newPost)
-    } catch (err) {}
+    } catch (err) {
+      console.log(err)
+    }
   }
   return (
     <div className='share'>
@@ -54,6 +68,7 @@ const Share = () => {
                 accept='.png,.jpeg,.jpg'
                 onChange={(e) => setFile(e.target.files[0])}
                 style={{display: 'none'}}
+                name='file'
               />
             </label>
             <div className='shareOption'>
