@@ -15,7 +15,7 @@ const Login = () => {
   }
   return (
     <>
-      {user && <Navigate to='/' />}
+      {/* {user && <Navigate to='/' />} */}
       <div className='login'>
         <div className='loginWrapper'>
           <div className='loginLeft'>
