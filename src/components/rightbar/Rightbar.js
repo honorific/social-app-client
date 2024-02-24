@@ -67,7 +67,10 @@ const Rightbar = ({user}) => {
         <div className='rightbarFollowings'>
           {friends?.map((friend) => {
             return (
-              <Link to={`/profile/${friend.username}`}>
+              <Link
+                to={`/profile/${friend.username}`}
+                style={{textDecoration: 'none'}}
+              >
                 <div className='rightbarFollowing'>
                   <img
                     src={
