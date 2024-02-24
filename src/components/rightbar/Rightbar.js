@@ -3,6 +3,7 @@ import {Users} from '../../dummyData'
 import Online from '../online/Online'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 const Rightbar = ({user}) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
   const [friends, setFriends] = useState([])
@@ -66,17 +67,21 @@ const Rightbar = ({user}) => {
         <div className='rightbarFollowings'>
           {friends?.map((friend) => {
             return (
-              <div className='rightbarFollowing'>
-                <img
-                  src={
-                    friend.profilePicture
-                      ? `${PF}${friend.profilePicture}`
-                      : `${PF}/person/noAvatar.png`
-                  }
-                  className='rightbarfollowingImg'
-                />
-                <span className='rightbarFollowingName'>{friend.username}</span>
-              </div>
+              <Link to={`/profile/${friend.username}`}>
+                <div className='rightbarFollowing'>
+                  <img
+                    src={
+                      friend.profilePicture
+                        ? `${PF}${friend.profilePicture}`
+                        : `${PF}/person/noAvatar.png`
+                    }
+                    className='rightbarfollowingImg'
+                  />
+                  <span className='rightbarFollowingName'>
+                    {friend.username}
+                  </span>
+                </div>
+              </Link>
             )
           })}
         </div>
