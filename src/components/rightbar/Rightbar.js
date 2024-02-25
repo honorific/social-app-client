@@ -11,7 +11,7 @@ import {Add, Remove} from '@mui/icons-material'
 const Rightbar = ({user}) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
   const [friends, setFriends] = useState([])
-  const {user: currentUser} = useContext(AuthContext)
+  const {user: currentUser, dispatch} = useContext(AuthContext)
   const [followed, setFollowed] = useState(false)
 
   useEffect(() => {
@@ -33,11 +33,15 @@ const Rightbar = ({user}) => {
   const followHandler = async () => {
     try {
       if (followed) {
-        await axios.put(`users/${user?._id}/follow`, {userId: currentUser?._id})
-      } else {
         await axios.put(`users/${user?._id}/unfollow`, {
           userId: currentUser?._id,
         })
+        dispatch({type: 'follow', payload: user._id})
+      } else {
+        await axios.put(`users/${user?._id}/follow`, {
+          userId: currentUser?._id,
+        })
+        dispatch({type: 'follow', payload: user._id})
       }
     } catch (error) {
       console.log(error)
