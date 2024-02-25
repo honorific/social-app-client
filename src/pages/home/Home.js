@@ -12,13 +12,18 @@ const Home = () => {
   const {user} = useContext(AuthContext)
   return (
     <>
-      {!user && <Navigate to='/register' />}
-      <Topbar />
-      <div className='homeContainer'>
-        <Sidebar />
-        <Feed />
-        <Rightbar />
-      </div>
+      {!user._id ? (
+        <Navigate to='/register' />
+      ) : (
+        <>
+          <Topbar />
+          <div className='homeContainer'>
+            <Sidebar />
+            <Feed />
+            <Rightbar />
+          </div>
+        </>
+      )}
     </>
   )
 }

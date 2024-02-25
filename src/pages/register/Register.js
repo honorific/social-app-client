@@ -31,7 +31,7 @@ const Register = () => {
   }
   return (
     <>
-      {user && <Navigate to='/' />}
+      {user._id && <Navigate to='/' />}
       <div className='login'>
         <div className='loginWrapper'>
           <div className='loginLeft'>
