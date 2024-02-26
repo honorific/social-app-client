@@ -19,7 +19,7 @@ const Home = () => {
           <Topbar />
           <div className='homeContainer'>
             <Sidebar />
-            <Feed />
+            <Feed username={user.username} />
             <Rightbar />
           </div>
         </>
