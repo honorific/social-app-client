@@ -3,6 +3,7 @@ import './messenger.css'
 import {AuthContext} from '../../context/AuthContext'
 import {Navigate} from 'react-router-dom'
 import Topbar from '../../components/topbar/Topbar'
+import Conversation from '../../components/conversations/Conversation'
 
 const Messenger = () => {
   const {user} = useContext(AuthContext)
@@ -14,6 +15,7 @@ const Messenger = () => {
         <div className='chatMenu'>
           <div className='chatMenuWrapper'>
             <input placeholder='search for friends' className='chatMenuInput' />
+            <Conversation />
           </div>
         </div>
         <div className='chatBox'>
