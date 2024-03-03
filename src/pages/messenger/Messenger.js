@@ -5,6 +5,7 @@ import {Navigate} from 'react-router-dom'
 import Topbar from '../../components/topbar/Topbar'
 import Conversation from '../../components/conversations/Conversation'
 import Message from '../../components/message/Message'
+import ChatOnline from '../../components/chatOnline/ChatOnline'
 
 const Messenger = () => {
   const {user} = useContext(AuthContext)
@@ -36,7 +37,9 @@ const Messenger = () => {
           </div>
         </div>
         <div className='chatOnline'>
-          <div className='chatOnlineWrapper'>online</div>
+          <div className='chatOnlineWrapper'>
+            <ChatOnline />
+          </div>
         </div>
       </div>
     </>
