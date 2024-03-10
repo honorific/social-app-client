@@ -23,9 +23,6 @@ const Feed = ({username}) => {
     fetchPosts()
   }, [username, user._id])
 
-  console.log('username is', username)
-  console.log('username of context is: ', user.username)
-
   return (
     <div className='feed'>
       <div className='feedWrapper'>

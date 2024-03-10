@@ -15,7 +15,7 @@ const Rightbar = ({user}) => {
   const [followed, setFollowed] = useState(false)
 
   useEffect(() => {
-    setFollowed(currentUser.followings.includes(user?._id))
+    setFollowed(currentUser?.followings?.includes(user?._id))
   }, [currentUser, user?.id])
 
   useEffect(() => {
@@ -101,11 +101,12 @@ const Rightbar = ({user}) => {
         </div>
         <h4>user friends</h4>
         <div className='rightbarFollowings'>
-          {friends?.map((friend) => {
+          {friends?.map((friend, i) => {
             return (
               <Link
                 to={`/profile/${friend.username}`}
                 style={{textDecoration: 'none'}}
+                key={i}
               >
                 <div className='rightbarFollowing'>
                   <img

@@ -10,6 +10,7 @@ import {AuthContext} from '../../context/AuthContext'
 
 const Home = () => {
   const {user} = useContext(AuthContext)
+  console.log(user)
   return (
     <>
       {!user._id ? (

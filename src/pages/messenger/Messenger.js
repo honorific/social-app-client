@@ -27,7 +27,7 @@ const Messenger = () => {
 
   return (
     <>
-      {user._id && <Navigate to='/' />}
+      {!user._id && <Navigate to='/' />}
       <Topbar />
       <div className='messenger'>
         <div className='chatMenu'>
