@@ -7,6 +7,7 @@ import Conversation from '../../components/conversations/Conversation'
 import Message from '../../components/message/Message'
 import ChatOnline from '../../components/chatOnline/ChatOnline'
 import axios from 'axios'
+import {v4 as uuidv4} from 'uuid'
 
 const Messenger = () => {
   const {user} = useContext(AuthContext)
@@ -34,7 +35,13 @@ const Messenger = () => {
           <div className='chatMenuWrapper'>
             <input placeholder='search for friends' className='chatMenuInput' />
             {conversations.map((c) => {
-              return <Conversation />
+              return (
+                <Conversation
+                  conversation={c}
+                  currentUser={user}
+                  key={uuidv4()}
+                />
+              )
             })}
           </div>
         </div>
