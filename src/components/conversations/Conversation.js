@@ -20,7 +20,6 @@ const Conversation = ({conversation, currentUser}) => {
     getUser()
   }, [conversation, currentUser._id])
 
-  console.log('user is: ', user)
   return (
     <div className='conversation'>
       <img

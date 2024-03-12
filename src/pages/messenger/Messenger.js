@@ -28,6 +28,8 @@ const Messenger = () => {
     getConversations()
   }, [user._id])
 
+  console.log('currentChat is:', currentChat)
+
   return (
     <>
       {!user._id && <Navigate to='/' />}
@@ -38,11 +40,13 @@ const Messenger = () => {
             <input placeholder='search for friends' className='chatMenuInput' />
             {conversations.map((c) => {
               return (
-                <Conversation
-                  conversation={c}
-                  currentUser={user}
-                  key={uuidv4()}
-                />
+                <div onClick={() => setCurrentChat(c)}>
+                  <Conversation
+                    conversation={c}
+                    currentUser={user}
+                    key={uuidv4()}
+                  />
+                </div>
               )
             })}
           </div>
@@ -65,9 +69,9 @@ const Messenger = () => {
                 </div>
               </>
             ) : (
-              <sapn className='noConversationText'>
+              <span className='noConversationText'>
                 select a conversation to start messaging
-              </sapn>
+              </span>
             )}
           </div>
         </div>
