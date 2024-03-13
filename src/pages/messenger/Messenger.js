@@ -28,7 +28,20 @@ const Messenger = () => {
     getConversations()
   }, [user._id])
 
+  useEffect(() => {
+    const getMessages = async () => {
+      try {
+        const res = await axios.get(`/messages/${currentChat?._id}`)
+        setMessages(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getMessages()
+  }, [currentChat])
+
   console.log('currentChat is:', currentChat)
+  console.log('messsages are: ', messages)
 
   return (
     <>
@@ -56,9 +69,9 @@ const Messenger = () => {
             {currentChat ? (
               <>
                 <div className='chatBoxTop'>
-                  <Message />
-                  <Message own={true} />
-                  <Message />
+                  {messages?.map((m) => {
+                    return <Message message={m} own={m.sender === user._id} />
+                  })}
                 </div>
                 <div className='chatBoxBottom'>
                   <textarea
