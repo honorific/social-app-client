@@ -8,12 +8,14 @@ import Message from '../../components/message/Message'
 import ChatOnline from '../../components/chatOnline/ChatOnline'
 import axios from 'axios'
 import {v4 as uuidv4} from 'uuid'
+import {HandymanOutlined} from '@mui/icons-material'
 
 const Messenger = () => {
   const {user} = useContext(AuthContext)
   const [conversations, setConversations] = useState([])
   const [currentChat, setCurrentChat] = useState(null)
   const [messages, setMessages] = useState([])
+  const [newMessage, setNewMessage] = useState('')
 
   useEffect(() => {
     console.log(user)
@@ -40,8 +42,20 @@ const Messenger = () => {
     getMessages()
   }, [currentChat])
 
-  console.log('currentChat is:', currentChat)
-  console.log('messsages are: ', messages)
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const message = {
+      sender: user._id,
+      text: newMessage,
+      conversationId: currentChat._id,
+    }
+    try {
+      const res = await axios.post('/messages', message)
+      setMessages([...messages, res.data])
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <>
@@ -77,8 +91,12 @@ const Messenger = () => {
                   <textarea
                     placeholder='write something...'
                     className='chatMessageInput'
+                    onChange={(e) => setNewMessage(e.target.value)}
+                    value={newMessage}
                   ></textarea>
-                  <button className='chatSubmitButton'>Send</button>
+                  <button className='chatSubmitButton' onClick={handleSubmit}>
+                    Send
+                  </button>
                 </div>
               </>
             ) : (
