@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from 'react'
+import {useContext, useEffect, useRef, useState} from 'react'
 import './messenger.css'
 import {AuthContext} from '../../context/AuthContext'
 import {Navigate} from 'react-router-dom'
@@ -8,7 +8,6 @@ import Message from '../../components/message/Message'
 import ChatOnline from '../../components/chatOnline/ChatOnline'
 import axios from 'axios'
 import {v4 as uuidv4} from 'uuid'
-import {HandymanOutlined} from '@mui/icons-material'
 
 const Messenger = () => {
   const {user} = useContext(AuthContext)
@@ -16,6 +15,7 @@ const Messenger = () => {
   const [currentChat, setCurrentChat] = useState(null)
   const [messages, setMessages] = useState([])
   const [newMessage, setNewMessage] = useState('')
+  const scrollRef = useRef()
 
   useEffect(() => {
     console.log(user)
@@ -42,6 +42,10 @@ const Messenger = () => {
     getMessages()
   }, [currentChat])
 
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({behavior: 'smooth'})
+  }, [messages])
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const message = {
@@ -52,6 +56,7 @@ const Messenger = () => {
     try {
       const res = await axios.post('/messages', message)
       setMessages([...messages, res.data])
+      setNewMessage('')
     } catch (error) {
       console.log(error)
     }
@@ -84,7 +89,11 @@ const Messenger = () => {
               <>
                 <div className='chatBoxTop'>
                   {messages?.map((m) => {
-                    return <Message message={m} own={m.sender === user._id} />
+                    return (
+                      <div ref={scrollRef}>
+                        <Message message={m} own={m.sender === user._id} />
+                      </div>
+                    )
                   })}
                 </div>
                 <div className='chatBoxBottom'>
