@@ -26,7 +26,7 @@ const Conversation = ({conversation, currentUser}) => {
         className='conversationImg'
         src={
           user?.profilePicture
-            ? user?.profilePicture
+            ? `${PF}/user?.profilePicture`
             : `${PF}/person/noAvatar.png`
         }
       />
