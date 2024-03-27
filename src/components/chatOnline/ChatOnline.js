@@ -1,7 +1,11 @@
 import {SpaTwoTone} from '@mui/icons-material'
 import './chatOnline.css'
+import {useState} from 'react'
 
-const ChatOnline = () => {
+const ChatOnline = ({onlineUsers, currentId, setCurrentChat}) => {
+  const [friends, setFriends] = useState([])
+  const [onlineFriends, setOnlineFriends] = useState([])
+
   return (
     <div className='chatOnline'>
       <div className='chatOnlineFriend'>
