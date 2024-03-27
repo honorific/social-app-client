@@ -16,6 +16,7 @@ const Messenger = () => {
   const [currentChat, setCurrentChat] = useState(null)
   const [messages, setMessages] = useState([])
   const [arrivalMessage, setArrivalMessage] = useState(null)
+  const [onlineUsers, setOnlineUsers] = useState([])
   const [newMessage, setNewMessage] = useState('')
   const socket = useRef()
   const scrollRef = useRef()
@@ -41,7 +42,7 @@ const Messenger = () => {
     if (user._id !== null) {
       socket.current.emit('addUser', user._id)
       socket.current.on('getUsers', (users) => {
-        console.log(users)
+        setOnlineUsers(users)
       })
     }
   }, [user])
@@ -154,7 +155,11 @@ const Messenger = () => {
         </div>
         <div className='chatOnline'>
           <div className='chatOnlineWrapper'>
-            <ChatOnline />
+            <ChatOnline
+              onlineUsers={onlineUsers}
+              currentId={user._id}
+              setCurrentChat={setCurrentChat}
+            />
           </div>
         </div>
       </div>
