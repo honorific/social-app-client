@@ -29,7 +29,7 @@ const ChatOnline = ({onlineUsers, currentId, setCurrentChat}) => {
                 src={
                   o?.profilePicture
                     ? PF + o.profilePicture
-                    : `${PF}preson/noAvatar.png`
+                    : `${PF}person/noAvatar.png`
                 }
               />
               <div className='chatOnlineBadge'></div>
